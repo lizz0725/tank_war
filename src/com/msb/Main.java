@@ -1,23 +1,18 @@
 package com.msb;
 
+import com.msb.frame.TankFrame;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Main {
 
-    public static void main(String[] args) {
-	// write your code here
-        Frame frame = new Frame();
-        frame.setSize(800,600);
-        frame.setTitle("坦克大战");
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
+    public static void main(String[] args) throws InterruptedException {
+        TankFrame frame = new TankFrame();
+        while (true){
+            Thread.sleep(50L);
+            frame.repaint();
+        }
     }
 }
