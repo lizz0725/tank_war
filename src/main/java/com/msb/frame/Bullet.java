@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Bullet {
 
-    private static final  int SPEED = 1;
+    private static final  int SPEED = 8;
     private final int WIDTH = ResourceManage.bulletU.getWidth(),
             HEIGHT = ResourceManage.bulletU.getHeight();
     private int x,y;
@@ -12,6 +12,8 @@ public class Bullet {
     private boolean alive = true;
     private TankFrame tf;
     private Group group;
+    //每次爆炸都要新new,会导致内存空间堆积
+    Rectangle rect = new Rectangle();
 
 
     public Bullet(int x, int y, Dir dir,Group group ,TankFrame tankFrame) {
@@ -20,6 +22,13 @@ public class Bullet {
         this.dir = dir;
         this.group = group;
         this.tf = tankFrame;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height= HEIGHT;
+
+
     }
 
 
@@ -83,7 +92,7 @@ public class Bullet {
         Rectangle bulletRectangle = new Rectangle(this.x, this.y, this.WIDTH, this.HEIGHT);
         Rectangle tankRectangle = new Rectangle(tank.getX(), tank.getY(), tank.getWIDTH(), tank.getHEIGHT());
         //如果相撞
-        if(this.alive && tank.isAlive() && bulletRectangle.intersects(tankRectangle)){
+        if(this.alive && tank.isAlive() && this.rect.intersects(tank.rect)){
             this.die();
             tank.die();
         }

@@ -11,10 +11,12 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
+    //public static final TankFrame INSTANCE = new TankFrame();
     Tank myTank = new Tank(200,200,Dir.DOWN,Group.GOOD,this);
 
     List<Bullet> bullets = new ArrayList<>();
     public List<Tank> tanks = new ArrayList<>();
+    public List<Explode> explodes = new ArrayList<>();
 
     public final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 
@@ -28,7 +30,7 @@ public class TankFrame extends Frame {
      * 1.完善爆炸,碰撞时也需要爆炸 .  同样可能存在多个爆炸 使用List
      * 2.坦克图片优化, 好坦克与坏坦克分开
      * 3.新增ImageUtil旋转图片
-     * 4.敌方坦克,随机移动,随机发射子弹
+     * 4.敌方坦克,随机移动,随机发射子弹    随机移动已完成,边界范围待完成
      * 5.随机移动的频率降低
      * 6.爆炸的位置在坦克的中心
      * 7.坦克好坏显示要不一致
@@ -79,6 +81,7 @@ public class TankFrame extends Frame {
         g.setColor(Color.white);
         g.drawString("子弹的数量:" + bullets.size(),10,60);
         g.drawString("敌方坦克的数量:" + tanks.size(),10,80);
+        g.drawString("explodes" + explodes.size(), 10, 100);
         g.setColor(color);
 
         myTank.paint(g);
@@ -107,6 +110,11 @@ public class TankFrame extends Frame {
                 tankIterator.remove();
             }
             tank.paint(g);
+        }
+
+        //爆炸
+        for (int i = 0; i < explodes.size(); i++) {
+            explodes.get(i).paint(g);
         }
 
      }
