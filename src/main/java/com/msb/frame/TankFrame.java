@@ -16,7 +16,7 @@ public class TankFrame extends Frame {
 
     List<Bullet> bullets = new ArrayList<>();
     public List<Tank> tanks = new ArrayList<>();
-    public List<Explode> explodes = new ArrayList<>();
+    //public List<Explode> explodes = new ArrayList<>();
 
     public final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 
@@ -81,7 +81,7 @@ public class TankFrame extends Frame {
         g.setColor(Color.white);
         g.drawString("子弹的数量:" + bullets.size(),10,60);
         g.drawString("敌方坦克的数量:" + tanks.size(),10,80);
-        g.drawString("explodes" + explodes.size(), 10, 100);
+        //g.drawString("explodes" + explodes.size(), 10, 100);
         g.setColor(color);
 
         myTank.paint(g);
@@ -113,9 +113,9 @@ public class TankFrame extends Frame {
         }
 
         //爆炸
-        for (int i = 0; i < explodes.size(); i++) {
-            explodes.get(i).paint(g);
-        }
+//        for (int i = 0; i < explodes.size(); i++) {
+//            explodes.get(i).paint(g);
+//        }
 
      }
 

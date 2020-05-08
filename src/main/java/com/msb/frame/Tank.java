@@ -128,9 +128,9 @@ public class Tank {
 
     public void die() {
         this.alive = false;
-        int eX = this.getX() + WIDTH/2 - Explode.WIDTH/2;
-        int eY = this.getY() + HEIGHT/2 - Explode.HEIGHT/2;
-        this.frame.explodes.add(new Explode(eX, eY, this.frame));
+//        int eX = this.getX() + WIDTH/2 - Explode.WIDTH/2;
+//        int eY = this.getY() + HEIGHT/2 - Explode.HEIGHT/2;
+//        this.frame.explodes.add(new Explode(eX, eY, this.frame));
     }
 
 

@@ -4,3 +4,7 @@ public enum Dir {
 
     UP,DOWN,LEFT,RIGHT
 }
+
+interface A  extends Comparable{
+
+}
